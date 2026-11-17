@@ -1,0 +1,26 @@
+
+services:
+  stockmind:
+    build: .
+    container_name: stockmind-app
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY:?Add GEMINI_API_KEY to your .env file}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.1-flash-lite}
+
+    restart: unless-stopped
+    init: true
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
