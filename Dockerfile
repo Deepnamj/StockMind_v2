@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir --upgrade pip \
 COPY . .
 
 # FastAPI port
-EXPOSE 8000
+EXPOSE 10000
 
 # Start the FastAPI application
-CMD ["uvicorn", "src.hitl.api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn src.hitl.api:app --host 0.0.0.0 --port ${PORT:-10000}"]
