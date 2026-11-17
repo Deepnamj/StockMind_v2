@@ -1,97 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockMind | AI Stock Research</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <!-- Markdown rendering and HTML sanitization -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
-
-    <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b1d">
+  <title>StockMind | AI Stock Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
-
 <body>
+  <aside class="sidebar">
+    <a class="brand" href="#home" aria-label="StockMind home">
+      <span class="brand-icon">S</span>
+      <span class="brand-copy"><strong>Stock<span>Mind</span></strong><small>AI STOCK INTELLIGENCE</small></span>
+    </a>
+    <nav class="side-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#home"><span class="nav-symbol">⌂</span>Home</a>
+      <a class="nav-link" href="#research"><span class="nav-symbol">⌕</span>Research</a>
+      <a class="nav-link" href="#assistant"><span class="nav-symbol">✧</span>AI Assistant</a>
+    </nav>
+    <div class="sidebar-promo">
+      <div class="promo-icon">▥</div>
+      <strong>Smarter investing starts with better research.</strong>
+      <span>Explore. Understand. Decide.</span>
+      <div class="promo-orbit"></div>
+    </div>
+    <div class="sidebar-bottom"><span class="online-dot"></span><span>Research &amp; decision support</span></div>
+  </aside>
 
-    <header>
-        <div class="logo">Stock<span>Mind</span></div>
-        <small>AI-powered stock research & decision support</small>
+  <main class="app-main" id="home">
+    <header class="topbar">
+      <div class="mobile-brand"><span class="brand-icon">S</span><strong>Stock<span>Mind</span></strong></div>
+      <form class="global-search" id="globalSearchForm" role="search">
+        <span class="search-symbol">⌕</span>
+        <input id="search" type="search" placeholder="Search for a company or ticker (e.g. Apple, RELIANCE.NS...)" autocomplete="off" aria-label="Search company or ticker">
+        <button id="searchBtn" type="submit">Search <span>→</span></button>
+      </form>
+      <div class="topbar-status"><span class="online-dot"></span>AI research workspace</div>
     </header>
 
-    <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="sparkle">✦</span> AI-POWERED STOCK INTELLIGENCE</span>
+        <h1 id="heroTitle">Understand the market.<br><span>Research with intelligence.</span></h1>
+        <p>Explore companies, uncover financial insights and make more informed decisions with StockMind.</p>
+        <div class="hero-tags"><span>⌁ Company Research</span><span>▥ Financial Analysis</span><span>✧ AI Insights</span></div>
+        <div class="market-picker">
+          <span class="market-label">Explore market</span>
+          <div class="market-tabs" role="group" aria-label="Filter stocks by market">
+            <button class="market-tab active" type="button" data-market="India" aria-pressed="true">🇮🇳 <span>India</span></button>
+            <button class="market-tab" type="button" data-market="USA" aria-pressed="false">🇺🇸 <span>USA</span></button>
+            <button class="market-tab" type="button" data-market="All" aria-pressed="false">◎ <span>All Markets</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-grid"></div>
+        <svg class="market-art" viewBox="0 0 620 390" role="img" aria-label="Abstract financial growth illustration">
+          <defs>
+            <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#275dff"/><stop offset="1" stop-color="#bd73ff"/></linearGradient>
+            <linearGradient id="panelGrad" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#2939a5" stop-opacity=".85"/><stop offset="1" stop-color="#a35bff" stop-opacity=".35"/></linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="9" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <g opacity=".28" stroke="#547dff" stroke-width="1"><path d="M30 330H590M50 270H590M70 210H590M90 150H590"/><path d="M110 70V340M210 50V340M310 35V340M410 25V340M510 20V340"/></g>
+          <g fill="#3156df" opacity=".55"><rect x="90" y="230" width="15" height="70"/><rect x="120" y="195" width="15" height="105"/><rect x="150" y="215" width="15" height="85"/><rect x="180" y="160" width="15" height="140"/><rect x="210" y="178" width="15" height="122"/><rect x="240" y="130" width="15" height="170"/><rect x="270" y="145" width="15" height="155"/></g>
+          <path d="M55 290 C130 250 160 270 215 205 S310 180 360 130 S470 105 555 35" fill="none" stroke="#4f8cff" stroke-width="4" filter="url(#glow)"/>
+          <g transform="translate(280 60)"><rect width="245" height="235" rx="28" fill="url(#panelGrad)" stroke="#8d8cff" stroke-opacity=".85" stroke-width="2"/><rect x="17" y="18" width="211" height="198" rx="20" fill="#111b55" fill-opacity=".45" stroke="#8ba8ff" stroke-opacity=".2"/><g fill="url(#barGrad)" filter="url(#glow)"><rect x="45" y="132" width="27" height="54" rx="7"/><rect x="86" y="103" width="27" height="83" rx="7"/><rect x="127" y="72" width="27" height="114" rx="7"/><rect x="168" y="42" width="27" height="144" rx="7"/></g><path d="M43 112L91 83L128 91L187 40" fill="none" stroke="#8ff4ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M168 39L189 37L188 59" fill="none" stroke="#8ff4ff" stroke-width="5" stroke-linecap="round"/></g>
+          <ellipse cx="390" cy="332" rx="225" ry="28" fill="#643dff" opacity=".22" filter="url(#glow)"/>
+        </svg>
+        <div class="art-caption"><span class="caption-pulse"></span> INSIGHT IN MOTION</div>
+      </div>
+    </section>
 
-        <!-- COMPANY RESEARCH -->
-        <section class="panel">
+    <section class="popular-section" aria-labelledby="popularTitle">
+      <div class="section-title-row"><div><span class="eyebrow">MARKET DISCOVERY</span><h2 id="popularTitle">Popular stocks <span class="market-context" id="marketContext">India</span></h2></div><span class="section-note">Select a company to open its research</span></div>
+      <div class="stock-grid" id="stockCards">
+        <button class="stock-card" type="button" data-market="India" data-symbol="RELIANCE.NS"><span class="stock-logo reliance">R</span><span class="stock-info"><strong>Reliance Industries</strong><small>RELIANCE.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="TCS.NS"><span class="stock-logo tcs">T</span><span class="stock-info"><strong>Tata Consultancy Services</strong><small>TCS.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="HDFCBANK.NS"><span class="stock-logo hdfc">H</span><span class="stock-info"><strong>HDFC Bank</strong><small>HDFCBANK.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="INFY.NS"><span class="stock-logo infosys">I</span><span class="stock-info"><strong>Infosys</strong><small>INFY.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="ICICIBANK.NS"><span class="stock-logo icici">i</span><span class="stock-info"><strong>ICICI Bank</strong><small>ICICIBANK.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="SBIN.NS"><span class="stock-logo sbi">S</span><span class="stock-info"><strong>State Bank of India</strong><small>SBIN.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="LT.NS"><span class="stock-logo lt">L</span><span class="stock-info"><strong>Larsen &amp; Toubro</strong><small>LT.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="BHARTIARTL.NS"><span class="stock-logo airtel">A</span><span class="stock-info"><strong>Bharti Airtel</strong><small>BHARTIARTL.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="ITC.NS"><span class="stock-logo itc">I</span><span class="stock-info"><strong>ITC</strong><small>ITC.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="India" data-symbol="WIPRO.NS"><span class="stock-logo wipro">W</span><span class="stock-info"><strong>Wipro</strong><small>WIPRO.NS</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="AAPL"><span class="stock-logo apple">A</span><span class="stock-info"><strong>Apple</strong><small>AAPL</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="NVDA"><span class="stock-logo nvidia">N</span><span class="stock-info"><strong>NVIDIA</strong><small>NVDA</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="MSFT"><span class="stock-logo microsoft">M</span><span class="stock-info"><strong>Microsoft</strong><small>MSFT</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="TSLA"><span class="stock-logo tesla">T</span><span class="stock-info"><strong>Tesla</strong><small>TSLA</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="AMZN"><span class="stock-logo amazon">a</span><span class="stock-info"><strong>Amazon</strong><small>AMZN</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="GOOGL"><span class="stock-logo alphabet">G</span><span class="stock-info"><strong>Alphabet</strong><small>GOOGL</small></span><span class="stock-go">↗</span></button>
+        <button class="stock-card" type="button" data-market="USA" data-symbol="META"><span class="stock-logo meta">∞</span><span class="stock-info"><strong>Meta Platforms</strong><small>META</small></span><span class="stock-go">↗</span></button>
+      </div>
+    </section>
 
-            <h2>Company research</h2>
+    <section class="workspace" aria-label="Research workspace">
+      <section class="panel research-panel" id="research">
+        <div class="panel-heading"><div class="panel-title-icon research-icon">▥</div><div><span class="eyebrow">COMPANY INTELLIGENCE</span><h2>Company Research</h2><p>Profiles, financial fundamentals, price history and news.</p></div><button class="panel-action" id="researchSearchBtn" type="button" aria-label="Focus company search">⌕</button></div>
+        <div id="matches" class="matches" aria-live="polite"></div>
+        <div id="company" class="company-content"><div class="research-empty"><div class="empty-graphic"><span>▤</span><i>⌕</i></div><h3>Your research starts here</h3><p>Search for a company above or choose a popular stock to explore its profile, market data, financial fundamentals, historical performance and latest news.</p><span class="empty-hint">Your selected company's research will appear in this workspace.</span></div></div>
+      </section>
 
-            <div class="searchrow">
-                <input
-                    id="search"
-                    placeholder="Search company or ticker (e.g. Apple or AAPL)"
-                >
-                <button id="searchBtn">Search</button>
-            </div>
+      <section class="panel assistant-panel" id="assistant">
+        <div class="panel-heading"><div class="panel-title-icon assistant-icon">✦</div><div><span class="eyebrow">AI RESEARCH COMPANION</span><h2>Ask StockMind</h2><p>Your AI-powered stock research assistant.</p></div><span class="powered-pill">✦ Powered by AI</span></div>
+        <div id="chatlog" class="chatlog" aria-live="polite">
+          <div class="assistant-welcome"><div class="assistant-avatar">S</div><div><strong>Hello! I'm StockMind.</strong><p>Ask about companies, financial metrics, stock performance or comparisons.</p></div></div>
+          <div class="suggestion-area"><span class="suggestion-label">TRY ASKING</span>
+            <button class="prompt-chip" type="button" data-prompt="Analyse this company's financial performance.">Analyse financial performance <span>→</span></button>
+            <button class="prompt-chip" type="button" data-prompt="What are the major risks associated with this stock?">What are the major risks? <span>→</span></button>
+            <button class="prompt-chip" type="button" data-prompt="Explain the company's recent developments.">Explain recent developments <span>→</span></button>
+            <button class="prompt-chip" type="button" data-prompt="What are the key growth opportunities?">Key growth opportunities <span>→</span></button>
+          </div>
+        </div>
+        <div class="chat-input-area"><div class="chat-compose"><span class="compose-sparkle">✦</span><input id="question" type="text" placeholder="Ask StockMind anything about stocks..." aria-label="Message StockMind"><button id="sendBtn" type="button">Send <span>↗</span></button></div><div class="input-hint">StockMind provides research and decision support for informational purposes only.</div></div>
+        <div id="approval" class="approval-card hidden"><div class="approval-heading"><span>⚑</span><div><h3>Human approval required</h3><p>Review the requested action before continuing.</p></div></div><pre id="approvalText"></pre><div class="actions"><button id="approveBtn" type="button">Approve simulation</button><button class="secondary" id="rejectBtn" type="button">Reject</button></div></div>
+        <div class="status" id="chatStatus" role="status"></div>
+      </section>
+    </section>
 
-            <div id="matches"></div>
+    <section class="feature-strip" aria-label="StockMind capabilities"><div class="feature-item"><span class="feature-icon purple">▥</span><div><strong>AI-Powered Research</strong><small>Explore company insights</small></div></div><div class="feature-item"><span class="feature-icon blue">▰</span><div><strong>Intelligent Analysis</strong><small>Understand trends and risks</small></div></div><div class="feature-item"><span class="feature-icon green">✓</span><div><strong>Agentic AI</strong><small>Reasoning with human oversight</small></div></div><div class="feature-item"><span class="feature-icon amber">◈</span><div><strong>Human Oversight</strong><small>You stay in control</small></div></div></section>
 
-            <div id="company">
-                <p class="empty-state">
-                    Search for a company to view its profile, price, fundamentals,
-                    history and news.
-                </p>
-            </div>
-
-        </section>
-
-        <!-- AI CHAT -->
-        <section class="panel">
-
-            <h2>Ask StockMind</h2>
-
-            <div id="chatlog">
-                <div class="message bot">
-                    Hello! Welcome to StockMind.
-
-                    Ask me about a company, stock price, financial metrics,
-                    historical performance or company comparisons.
-                </div>
-            </div>
-
-            <div class="searchrow">
-                <input
-                    id="question"
-                    placeholder="Ask a stock-related question..."
-                >
-                <button id="sendBtn">Send</button>
-            </div>
-
-            <!-- HUMAN APPROVAL -->
-            <div id="approval" class="hidden section">
-
-                <h3>Human approval required</h3>
-
-                <p class="muted">
-                    Review the simulated purchase details before continuing.
-                </p>
-
-                <pre id="approvalText"></pre>
-
-                <div class="actions">
-                    <button id="approveBtn">Approve simulation</button>
-                    <button class="secondary" id="rejectBtn">Reject</button>
-                </div>
-
-            </div>
-
-            <div class="status" id="chatStatus"></div>
-
-        </section>
-
-    </main>
-
-    <script src="/static/js/script.js"></script>
-
+    <footer class="footer"><a class="footer-brand" href="#home"><span class="brand-icon">S</span><strong>Stock<span>Mind</span></strong></a><span class="footer-divider"></span><p>AI stock intelligence · Research and decision support</p><span class="footer-disclaimer">For informational purposes only. Not financial advice.</span></footer>
+  </main>
+  <script src="/static/js/script.js"></script>
 </body>
 </html>
