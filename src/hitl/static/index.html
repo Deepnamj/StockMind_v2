@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockMind | AI Stock Research</title>
+
+    <!-- Markdown rendering and HTML sanitization -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Stock<span>Mind</span></div>
+        <small>AI-powered stock research & decision support</small>
+    </header>
+
+    <main>
+
+        <!-- COMPANY RESEARCH -->
+        <section class="panel">
+
+            <h2>Company research</h2>
+
+            <div class="searchrow">
+                <input
+                    id="search"
+                    placeholder="Search company or ticker (e.g. Apple or AAPL)"
+                >
+                <button id="searchBtn">Search</button>
+            </div>
+
+            <div id="matches"></div>
+
+            <div id="company">
+                <p class="empty-state">
+                    Search for a company to view its profile, price, fundamentals,
+                    history and news.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- AI CHAT -->
+        <section class="panel">
+
+            <h2>Ask StockMind</h2>
+
+            <div id="chatlog">
+                <div class="message bot">
+                    Hello! Welcome to StockMind.
+
+                    Ask me about a company, stock price, financial metrics,
+                    historical performance or company comparisons.
+                </div>
+            </div>
+
+            <div class="searchrow">
+                <input
+                    id="question"
+                    placeholder="Ask a stock-related question..."
+                >
+                <button id="sendBtn">Send</button>
+            </div>
+
+            <!-- HUMAN APPROVAL -->
+            <div id="approval" class="hidden section">
+
+                <h3>Human approval required</h3>
+
+                <p class="muted">
+                    Review the simulated purchase details before continuing.
+                </p>
+
+                <pre id="approvalText"></pre>
+
+                <div class="actions">
+                    <button id="approveBtn">Approve simulation</button>
+                    <button class="secondary" id="rejectBtn">Reject</button>
+                </div>
+
+            </div>
+
+            <div class="status" id="chatStatus"></div>
+
+        </section>
+
+    </main>
+
+    <script src="/static/js/script.js"></script>
+
+</body>
+</html>
